@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+
+# uploaded files and server state
+server/data/
+
+# env
+.env
+.env.local
+
+# os / editor
+.DS_Store
+*.log
+.vscode/
+.idea/
