@@ -1,10 +1,13 @@
 import cors from 'cors';
 import express from 'express';
 
+import { config } from './config.js';
+import { FileStorage } from './storage.js';
 import { fileRoutes } from './routes/files.js';
 
-export function createApp({ storage } = {}) {
+export function createApp({ storage, dataDir } = {}) {
   const app = express();
+  const store = storage ?? new FileStorage(dataDir ?? config.dataDir);
 
   app.use(cors({ origin: process.env.CORS_ORIGIN ?? true }));
   app.use(express.json({ limit: '1mb' }));
@@ -13,7 +16,7 @@ export function createApp({ storage } = {}) {
     res.json({ status: 'ok' });
   });
 
-  app.use('/api/files', fileRoutes({ storage }));
+  app.use('/api/files', fileRoutes({ storage: store }));
 
   // Fallback for unknown routes.
   app.use((_req, res) => {
