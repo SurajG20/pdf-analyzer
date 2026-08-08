@@ -37,7 +37,8 @@ export function ExtractBar({ count, extracting, disabled, onExtract }: ExtractBa
               'flex size-9 items-center justify-center rounded-full font-mono text-sm font-medium',
               count > 0 ? 'bg-sky-600 text-white' : 'bg-muted text-muted-foreground'
             )}
-            aria-live="polite"
+            role="status"
+            aria-label="Pages selected"
           >
             {count}
           </span>
