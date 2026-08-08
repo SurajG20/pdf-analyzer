@@ -1,0 +1,23 @@
+{
+  "name": "@gather/server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API for uploading PDFs, serving them back, and extracting selected pages.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "multer": "^2.0.1",
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0",
+    "vitest": "^3.0.5"
+  }
+}
