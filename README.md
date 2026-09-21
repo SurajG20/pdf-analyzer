@@ -1,10 +1,33 @@
-# gather
+# PDF Page Extractor (`pdf-analyzer`)
 
 Upload a PDF, mark the pages you need, set their order, and download a brand-new PDF.
 
 A small full-stack page extractor with a print-shop soul: paper-white interface, ink
 text, printer's-blue for the marks you make, and a registration mark as the signature
 motif. Files never leave your own server.
+
+## Problem
+
+People routinely need **a few pages from a large PDF**, in a **custom order**, without uploading documents to a random cloud converter.
+
+## Approach
+
+1. **Client validation** (type, size, `%PDF-` magic bytes) plus server re-validation.
+2. **pdf.js** thumbnails for mark-and-drag ordering (duplicates allowed).
+3. **pdf-lib** on the server to assemble the output; state survives failed extractions.
+
+## Decisions
+
+| Decision | Why |
+|----------|-----|
+| Self-hosted | Privacy-sensitive docs stay on your machine/server. |
+| Monorepo API + Vite client | Shared types and a single `npm test` story. |
+| Real disk storage in API tests | supertest against Express + temp dirs, not mocks only. |
+
+## Results
+
+- **30+** automated tests across client and server.
+- Screenshot-documented paper/ink UI themes.
 
 ## Screenshots
 
